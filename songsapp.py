@@ -45,7 +45,7 @@ def index():
 @app.route('/songs/<song>')
 def page():
     return render_template('song.html', songs=songs)
-    get_songinfo(WORST_SONGS, page)
+    get_songinfo(WORST_SONGS, song)
 
 
 # run the functions and use variables to hold what they return
