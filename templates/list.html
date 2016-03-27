@@ -16,10 +16,9 @@
 <p>For each song, you will find the song title, artist name, year of release, information about why it is included on the list, a link to the Wikipedia page about the song (or, in cases where a song page does not exist, the artist page), and a link to a YouTube video for the song.</p>
 
 <ul>
-  <li>{{ list }}</li>
   {% for song in songs %}
-        <li>{{ song }}</li>
-        {% endfor %}
+    <li><a href="/songs/{{ song }}">{{ song }}</a></li>
+    {% endfor %}
 </ul>
 
 </div> <!-- close container -->
