@@ -17,7 +17,7 @@ def get_songs(source):
     return (songs)
 
 
-# to do song=song in the page function, it says I need to define the variable song globally????
+# to do song=song in the page function, it says I need to define the variable song globally
 for row in source:
     song = row["Song Title"]
 
@@ -34,23 +34,23 @@ def get_songinfo(source, page):
     return song, artist, year, info, wiki, youtube
 
 
-@app.route('/list')
+@app.route('/')
 def index():
     return render_template('list.html')
-    get_songs(WORST_SONGS)
-
-
+get_songs(WORST_SONGS)
 
 
 @app.route('/songs/<song>')
 def page():
     return render_template('song.html', songs=songs)
-    get_songinfo(WORST_SONGS, song)
+get_songinfo(WORST_SONGS, song)
 
 
+# the code below works
+'''
 # run the functions and use variables to hold what they return
 songs = get_songs(WORST_SONGS)
-song = songs[5]
+song = songs[8]
 song, artist, year, info, wiki, youtube = get_songinfo(WORST_SONGS, song)
 
 print("\nThese are all the titles in the Python list:")
@@ -59,7 +59,7 @@ print("\nThis is one selected title from that list:")
 print song
 print("\nThese values came from one row in the data file:")
 print song, artist, year, info, wiki, youtube
-
+'''
 
 
 
