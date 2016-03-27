@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title> List of Songs Considered the Worst </title>
+</head>
+
+<body>
+<div id="container">
+
+<h1>List of Songs Considered the Worst</h1>
+
+<p>This is a list of the 22 songs considered to be the worst in recent history. The songs that are listed here were taken from this Wikipedia List: <a href="https://en.wikipedia.org/wiki/List_of_music_considered_the_worst#Songs">List of music considered the worst</a>.</p>
+
+<p>For each song, you will find the song title, artist name, year of release, information about why it is included on the list, a link to the Wikipedia page about the song (or, in cases where a song page does not exist, the artist page), and a link to a YouTube video for the song.</p>
+
+{% for songs in get_songs %}
+        <li>{{ song }}</li>
+        {% endfor %}<li>
+
+</div> <!-- close container -->
+
+</body>
+</html>
