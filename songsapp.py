@@ -3,11 +3,16 @@ app = Flask(__name__)
 
 from worst_songs import WORST_SONGS
 
-source = WORST_SONGS
 
 @app.route('/list')
 def index():
     return render_template('list.html')
+
+@app.route('/songs/<song>')
+def page():
+    return render_template('song.html', song=song)
+
+
 # retrieve all the songs from the dataset and put them into a list
 def get_songs(source):
     # new empty list
@@ -17,14 +22,11 @@ def get_songs(source):
         song = row["Song Title"]
         # add the title to the list
         songs.append(song)
-    return (songs)
+    return ('<ul><a href=/songs/{{ song }}">{{ song }}</a>')
 
 
-@app.route('/songs/<song>')
-def page():
-    return render_template('song.html', song=song)
 # find the row that matches the song name, retrieve artist, year, info, and links for that title
-def get_songinfo(source, page):
+def get_songinfo(source, song):
     for row in source:
         if song == row["Song Title"]:
             artist = row["Artist"]
@@ -33,6 +35,7 @@ def get_songinfo(source, page):
             wiki = row["Wikipedia Link"]
             youtube = row["YouTube Link"]
     return song, artist, year, info, wiki, youtube
+
 
 # run the functions and use variables to hold what they return
 songs = get_songs(WORST_SONGS)
