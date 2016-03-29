@@ -1,9 +1,9 @@
 from flask import Flask, render_template
-app = Flask(__name__)
-
 from worst_songs import WORST_SONGS
 
-source = WORST_SONGS
+app = Flask(__name__)
+
+
 
 # retrieve all the songs from the dataset and put them into a list
 def get_songs(source):
@@ -17,13 +17,8 @@ def get_songs(source):
     return (songs)
 
 
-# to do song=song in the page function, it says I need to define the variable song globally
-for row in source:
-    song = row["Song Title"]
-
-
 # find the row that matches the song name, retrieve artist, year, info, and links for that title
-def get_songinfo(source, page):
+def get_songinfo(source, song):
     for row in source:
         if song == row["Song Title"]:
             artist = row["Artist"]
@@ -34,19 +29,20 @@ def get_songinfo(source, page):
     return song, artist, year, info, wiki, youtube
 
 
-@app.route('/')
+@app.route('/list')
 def index():
-    return render_template('list.html')
-get_songs(WORST_SONGS)
+    songs = get_songs(WORST_SONGS)
+    return render_template('list.html', songs=songs)
 
 
-@app.route('/songs/<song>')
-def page():
-    return render_template('song.html', songs=songs)
-get_songinfo(WORST_SONGS, song)
+@app.route('/list/<song>')
+def page(song):
+    song, artist, year, info, wiki, youtube = get_songinfo(WORST_SONGS, song)
+    return render_template('song.html', song=song, artist=artist, year=year, info=info, wiki=wiki, youtube=youtube)
 
 
-# the code below works
+
+# the code below works in the terminal to show that the information is being gathered
 '''
 # run the functions and use variables to hold what they return
 songs = get_songs(WORST_SONGS)

@@ -11,17 +11,17 @@
 
 <h1>{{ song }}</h1>
 
-<p>Artist Name: {{ artist }}</p>
-<p>Release Year: {{ year }}</p>
-<p>Information: {{ info }}</p>
-<p><a href="{{ wiki }}">Wikipedia Link</a></p>
-<p><a href="{{ youtube }}">YouTube Link</a></p>
+<p><b>Artist Name:</b> {{ artist }}</p>
+<p><b>Release Year:</b> {{ year }}</p>
+<p><b>Information:</b> {{ info }}</p>
+<p><a href="{{ wiki }}"><b>Wikipedia Link</b></a></p>
+<p><a href="{{ youtube }}"><b>YouTube Link</b></a></p>
 
 
 <br>
 
 
-<p><a href="{% url_for('index', external=True) %}">Go back to the full list.</a></p>
+<p><a <a href="/list">Go back to the full list.</a></p>
 
 </div> <!-- close the container -->
 
